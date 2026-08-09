@@ -1,8 +1,19 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+
+# Handle optional plotting libraries gracefully with helpful Streamlit messages
+try:
+    import matplotlib.pyplot as plt
+except ModuleNotFoundError:
+    st.error("Required package 'matplotlib' is not installed. Install it with `pip install matplotlib` or add it to requirements.txt and redeploy.")
+    raise
+
+try:
+    import seaborn as sns
+except ModuleNotFoundError:
+    st.error("Required package 'seaborn' is not installed. Install it with `pip install seaborn` or add it to requirements.txt and redeploy.")
+    raise
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
